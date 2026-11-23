@@ -1,0 +1,15 @@
+# build output
+NoActivateClick.exe
+*.pdb
+bin/
+obj/
+
+# test binaries / output
+tests/*.exe
+tests/*.out.txt
+tests/*.err.txt
+
+# local files
+*.log
+*.bak
+.vs/
