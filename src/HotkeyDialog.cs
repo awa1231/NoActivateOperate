@@ -2,7 +2,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace NoActivateClick
+namespace NonActivatingOperate
 {
     /// <summary>Small dialog that captures a new hotkey. Layout is scaled by hand because
     /// WinForms (without its DPI opt-in) keeps 96 dpi metrics while GDI+ draws at the real dpi.</summary>

@@ -2,7 +2,7 @@ using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 
-namespace NoActivateClick
+namespace NonActivatingOperate
 {
     internal static class AppIcons
     {

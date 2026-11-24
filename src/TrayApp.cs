@@ -5,12 +5,12 @@ using System.Threading;
 using System.Windows.Forms;
 using Microsoft.Win32;
 
-namespace NoActivateClick
+namespace NonActivatingOperate
 {
     internal sealed class TrayContext : ApplicationContext
     {
         private const string RunKeyPath = @"Software\Microsoft\Windows\CurrentVersion\Run";
-        private const string RunValueName = "NoActivateClick";
+        private const string RunValueName = "Non Activating Operate";
 
         private readonly AppConfig _config;
         private readonly ClickTargetPolicy _policy;
@@ -659,7 +659,7 @@ namespace NoActivateClick
                 "限制：\n" +
                 "· 依赖窗口消息的程序都能用；游戏、部分 UWP/商店应用自己读原始输入，可能没反应。\n" +
                 "· 想点管理员权限的窗口，需要以管理员身份运行本程序。\n\n" +
-                "配置和日志：%APPDATA%\\NoActivateClick";
+                "配置和日志：%APPDATA%\\Non Activating Operate";
             MessageBox.Show(text, "不激活点击 - 使用说明", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 

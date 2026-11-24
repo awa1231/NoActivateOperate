@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Threading;
 using System.Windows.Automation;
 
-namespace NoActivateClick
+namespace NonActivatingOperate
 {
     /// <summary>Tells whether a click landed in something that accepts typed text.</summary>
     internal static class TextFieldDetector

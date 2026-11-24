@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 
-namespace NoActivateClick
+namespace NonActivatingOperate
 {
     internal sealed class AppConfig
     {
@@ -69,7 +69,7 @@ namespace NoActivateClick
             try
             {
                 List<string> lines = new List<string>();
-                lines.Add("# NoActivateClick settings");
+                lines.Add("# Non Activating Operate settings");
                 lines.Add("enabled=" + (Enabled ? "1" : "0"));
                 lines.Add("wheel=" + (WheelRedirect ? "1" : "0"));
                 lines.Add("realdrag=" + (RealDragHandover ? "1" : "0"));

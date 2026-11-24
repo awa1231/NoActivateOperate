@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace NoActivateClick
+namespace NonActivatingOperate
 {
     internal enum ClickOutcome
     {

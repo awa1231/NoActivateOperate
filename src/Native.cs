@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace NoActivateClick
+namespace NonActivatingOperate
 {
     /// <summary>Thin P/Invoke layer. Everything the app (and the tests) need.</summary>
     internal static class Native

@@ -1,7 +1,7 @@
 using System;
 using System.Threading;
 
-namespace NoActivateClick
+namespace NonActivatingOperate
 {
     /// <summary>
     /// "Borrow the foreground": bring a background window forward so it can be typed into with

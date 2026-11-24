@@ -2,7 +2,7 @@ using System;
 using System.Text;
 using System.Windows.Forms;
 
-namespace NoActivateClick
+namespace NonActivatingOperate
 {
     [Flags]
     internal enum HotkeyModifiers

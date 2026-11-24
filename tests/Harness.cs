@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace NoActivateClick.Diagnostics
+namespace NonActivatingOperate.Diagnostics
 {
     /// <summary>Window used as a click target. Never activates itself when shown.</summary>
     internal sealed class TestTarget : Form
@@ -190,7 +190,7 @@ namespace NoActivateClick.Diagnostics
             IntPtr unused = _sync.Handle;
 
             Rectangle work = Screen.PrimaryScreen.WorkingArea;
-            Console.WriteLine("== NoActivateClick acceptance test ==");
+            Console.WriteLine("== Non Activating Operate acceptance test ==");
             Console.WriteLine("screen=" + Screen.PrimaryScreen.Bounds + " work=" + work);
 
             int W = work.Right;

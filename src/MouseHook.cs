@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace NoActivateClick
+namespace NonActivatingOperate
 {
     /// <summary>Global low level mouse hook that reroutes clicks instead of activating windows.</summary>
     internal sealed class MouseHook : IDisposable

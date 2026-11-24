@@ -2,7 +2,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace NoActivateClick
+namespace NonActivatingOperate
 {
     /// <summary>Invisible window that owns the global hotkey registrations.</summary>
     internal sealed class HotkeyHost : Form
@@ -19,7 +19,7 @@ namespace NoActivateClick
             StartPosition = FormStartPosition.Manual;
             Bounds = new Rectangle(-32000, -32000, 1, 1);
             ShowIcon = false;
-            Text = "NoActivateClick";
+            Text = "Non Activating Operate";
             IntPtr unused = Handle; // force handle creation for RegisterHotKey
         }
 

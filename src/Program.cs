@@ -2,7 +2,7 @@ using System;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace NoActivateClick
+namespace NonActivatingOperate
 {
     internal static class Program
     {
@@ -10,7 +10,7 @@ namespace NoActivateClick
         private static void Main()
         {
             bool createdNew;
-            using (Mutex mutex = new Mutex(true, "Global\\NoActivateClick.Main", out createdNew))
+            using (Mutex mutex = new Mutex(true, "Global\\NonActivatingOperate.Main", out createdNew))
             {
                 if (!createdNew)
                 {

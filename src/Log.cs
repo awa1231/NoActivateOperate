@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Text;
 
-namespace NoActivateClick
+namespace NonActivatingOperate
 {
     internal static class Log
     {
@@ -16,7 +16,7 @@ namespace NoActivateClick
             {
                 string dir = Path.Combine(
                     Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-                    "NoActivateClick");
+                    "Non Activating Operate");
                 try
                 {
                     if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);

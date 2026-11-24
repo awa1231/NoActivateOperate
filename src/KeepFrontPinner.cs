@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace NoActivateClick
+namespace NonActivatingOperate
 {
     /// <summary>
     /// Keeps the current stacking order: before a click activates a window, every visible window

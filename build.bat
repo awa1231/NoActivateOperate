@@ -10,7 +10,7 @@ if not exist "%CSC%" (
 )
 
 "%CSC%" /nologo /codepage:65001 /langversion:5 /target:winexe /platform:anycpu /optimize+ /warn:4 ^
-  /out:"%ROOT%NoActivateClick.exe" ^
+  /out:"%ROOT%Non Activating Operate.exe" ^
   /r:System.dll /r:System.Core.dll /r:System.Drawing.dll /r:System.Windows.Forms.dll ^
   /r:"%WINDIR%\Microsoft.NET\Framework64\v4.0.30319\WPF\UIAutomationClient.dll" ^
   /r:"%WINDIR%\Microsoft.NET\Framework64\v4.0.30319\WPF\UIAutomationTypes.dll" ^
@@ -37,7 +37,7 @@ if errorlevel 1 (
   goto :done
 )
 
-echo Built: %ROOT%NoActivateClick.exe
+echo Built: %ROOT%Non Activating Operate.exe
 set "RC=0"
 
 :done

@@ -1,145 +1,147 @@
-# 不激活点击（NoActivateClick）
+# Non Activating Operate
 
-点后台窗口里的按钮、链接、视频控件，**不会把那个窗口叫到最前面**，也不会抢走你正在打字的窗口的键盘焦点。
-**点后台窗口里的输入框，它会自动切到前台**，直接打字就行（中文也可以）。
+Click buttons, links, and video controls in background windows without bringing those windows to the front or taking keyboard focus away from the window you are currently typing in.
 
-- 免安装：编译出来是单个 exe（约 55 KB），不写系统目录，配置放在 `%APPDATA%\NoActivateClick`
-- 仓库里不存放编译产物，运行 `build.bat` 生成（用 Windows 自带的 .NET Framework 编译器，不用装 SDK）
-- 常驻托盘：图标变绿 = 已开启，变蓝 = 正临时借用某个窗口
-- 只用一个快捷键：**Ctrl+F** 开关（可以在菜单里改）
+Clicking a text field in a background window automatically brings that window forward, so you can start typing normally, including with Chinese input methods.
 
-> ⚠️ Ctrl+F 是所有程序里“查找”的默认快捷键。全局注册之后，只要本程序在运行，
-> Ctrl+F 会被本程序截走，浏览器/编辑器里的“查找”就用不了了。
-> 如果觉得别扭，右键托盘图标 → **更改开关快捷键…**，换成一个不常用的组合。
+- **Portable:** The application compiles into a single executable of approximately 55 KB. It does not write to system directories. Configuration is stored in `%APPDATA%\Non Activating Operate`.
+- **No build artifacts in the repository:** Run `build.bat` to generate the executable. It uses the .NET Framework compiler included with Windows, so no SDK is required.
+- **System tray utility:** The tray icon is green when the feature is enabled and blue when a window is temporarily being borrowed.
+- **One shortcut:** Press **Ctrl+F** to toggle the feature. You can assign a different shortcut from the tray menu.
+
+> ⚠️ `Ctrl+F` is the default Find shortcut in most applications. Once this global shortcut is registered, `Ctrl+F` is captured by Non Activating Operate while the application is running, so Find will no longer work in browsers, editors, and other applications.
+>
+> If this causes problems, right-click the tray icon and select **Change toggle shortcut…** to assign a less common key combination.
 
 ---
 
-## 使用
+## Usage
 
-1. 先运行 `build.bat` 生成 `NoActivateClick.exe`，双击它，托盘出现一个“两层窗口”的小图标。
-2. 按 **Ctrl+F** 开启（图标变绿，可听到提示音）。
-3. 点后面那个窗口的播放按钮 / 链接 / 列表项：窗口不会被提到前面，当前窗口的焦点也不会丢。
-4. **要打字**：直接点后面那个窗口的输入框 —— 它会自动切到前台，光标落在你点的地方，接着打字就行。
-5. 再按 **Ctrl+F** 关闭，一切恢复普通点击（如果还借着某个窗口，会自动放回去）。
+1. Run `build.bat` to create `Non Activating Operate.exe`. Double-click the executable. A small two-window icon appears in the notification area.
+2. Press **Ctrl+F** to enable the feature. The icon turns green and a confirmation sound may play.
+3. Click the play button, link, or list item in a background window. The window is not brought to the front, and the current window keeps keyboard focus.
+4. **To type:** Click a text field in the background window. That window is brought to the front temporarily, the cursor is placed where you clicked, and you can start typing normally.
+5. Press **Ctrl+F** again to disable the feature and restore normal click behavior. If a window is still being temporarily borrowed, it is restored automatically.
 
-不想让“点输入框自动切前台”生效，可以在菜单里关掉这一项；关掉后点击仍然不激活窗口，但也没法跨窗口打字了。
+You can disable **Bring background text fields forward** from the tray menu. Non-activating clicks will still work, but typing across windows will no longer be automatic.
 
-## 托盘菜单
+## Tray menu
 
-| 项目 | 说明 |
+| Item | Description |
 | --- | --- |
-| 开启 / 关闭 | 也可以用 Ctrl+F 或双击托盘图标 |
-| 点击后：不激活窗口 / 保持当前遮挡关系 | 两种点击行为，见下面“两种模式” |
-| **点击后台输入框时自动切到前台**（默认开） | 这就是“点一下输入框就能打字”的行为 |
-| 拖拽时改用真实拖放（默认开） | 拖文件、拖放需要真实鼠标，按下去拖出 10 像素后会切换成真实拖动，窗口会被激活一次 |
-| 滚轮滚动光标下的后台窗口（默认关） | 滚轮也作用在光标下的后台窗口上 |
-| 提示音 | 开关、借用、放回时的提示音 |
-| 临时前置光标下的窗口（打字用） | 手动兜底：某些程序的输入框识别不出来时用这个 |
-| 停止打字 6 秒后自动解除保持 | 默认开：停手 6 秒就把“保持”的那组窗口恢复成普通窗口 |
-| 把临时前置的窗口放回原处 | 借用结束后，把窗口按回原来的层级、焦点还回去 |
-| 钉住光标下的窗口（保持最前） | 把参考窗口钉在最上层，再正常点下面那个窗口打字，上面那个不会被盖住；再点一次取消 |
-| 更改开关快捷键… | 换掉 Ctrl+F |
-| 开机自动启动 | 写 `HKCU\...\CurrentVersion\Run`，不需要管理员权限 |
+| Enable / Disable | You can also use `Ctrl+F` or double-click the tray icon. |
+| Click behavior: Do not activate the window / Preserve current window stacking | Two click modes. See “Click behavior modes” below. |
+| **Bring background text fields forward** (enabled by default) | Clicking a background text field brings its window forward so you can type immediately. |
+| Use real drag and drop while dragging (enabled by default) | File dragging and drop operations require real mouse input. After the pointer moves 10 pixels, the tool switches to a real drag, which activates the target window once. |
+| Scroll the background window under the pointer (disabled by default) | Route wheel input to the background window beneath the pointer. |
+| Sounds | Play a confirmation sound when enabling, borrowing, or restoring a window. |
+| Temporarily foreground the window under the pointer | Manual fallback for applications whose text fields cannot be detected automatically. |
+| Release the hold after six seconds without typing (enabled by default) | After six seconds without keyboard or mouse input, restore the windows held in the current stacking group to normal behavior. |
+| Restore the temporarily foregrounded window | Return the borrowed window to its original position in the window stack and restore the previous foreground window. |
+| Pin the window under the pointer (keep on top) | Pin a reference window to the top, then interact normally with a lower window without covering it. Select the item again to unpin the window. |
+| Change toggle shortcut… | Replace `Ctrl+F` with another shortcut. |
+| Launch at Windows startup | Add an entry to `HKCU\...\CurrentVersion\Run`. Administrator privileges are not required. |
 
-## 行为细节
+## Behavior details
 
-- **只对“非当前活动窗口”生效**。点你自己正在用的窗口时，行为和平时完全一样（能拖、能选字、能点输入框），工具不会插手。
-- 支持 **左键、右键、中键、双击**。
-- **点输入框 = 自动借前台**：点后台窗口的输入框（Edit / RichEdit / 各类文本框，含浏览器、Electron、WPF 的输入框）时，
-  工具会把那个窗口临时切到前台，并在你点的位置补一次**真实点击**，保证光标真的落在输入框里；
-  这一步会改变前后顺序——因为 Windows 只把键盘送给前台窗口，不切前台就没法输入法打字。
-- **拖拽 / 拖放**：合成点击没法启动系统的 OLE 拖放，所以按住拖出 10 像素后，会自动切换成真实鼠标拖动，
-  拖文件、拖放都能正常用（同样会激活窗口一次）。不想要可以在菜单里关掉。
-- **“看着上面、打下面”**：切到“保持当前遮挡关系”模式（见下），点下面的窗口会正常激活、能直接打字，
-  上面盖着它的窗口仍然留在上面，画面不变。
-- 点 **任务栏 / 托盘 / 开始菜单 / 桌面**：完全正常，不受影响。
-- 点后台窗口的 **标题栏 / 边框 / 滚动条**：会被忽略（什么都不发生）。因为这类点击在 Windows 里必然要先激活窗口，想“不改变前后顺序”就只能不响应。
-- 托盘图标本身永远能正常点（就算功能开着），可以随时关掉。
+- **The utility only acts on windows that are not currently active.** When you click the window you are already using, behavior remains completely normal: dragging, text selection, and text-field clicks all work as usual.
+- Left-click, right-click, middle-click, and double-click are supported.
+- **Clicking a text field automatically borrows the foreground.** When you click a text field in a background window, including `Edit`, `RichEdit`, and text controls in browsers, Electron, and WPF applications, the utility temporarily brings the window to the foreground and sends a **real click** at the selected position so the caret is placed correctly. This changes the window order because Windows sends keyboard input only to the foreground window; typing with an input method is not possible without foreground activation.
+- **Drag and drop:** Synthetic clicks cannot start system OLE drag and drop. After the pointer moves 10 pixels while the mouse is held down, the utility switches to a real mouse drag so files and other drag-and-drop targets work normally. This also activates the target window once. You can disable this behavior from the menu.
+- **“Look at the upper window while typing in the lower one”:** In **Preserve current window stacking** mode, clicking a lower window activates it normally and lets you type directly, while the windows above it remain above it and the visible layout stays unchanged.
+- Clicking the **taskbar, notification area, Start menu, or desktop** behaves normally and is unaffected.
+- Clicking the **title bar, border, or scrollbar** of a background window is ignored. Windows must activate a window for these interactions, so the only way to preserve the current stacking order is to ignore them.
+- The tray icon always remains clickable, even while the feature is enabled, so you can disable it at any time.
 
-## 两种模式
+## Click behavior modes
 
-菜单第一组是“点击后”的两种行为，Ctrl+F 只管开关：
+The first group in the tray menu controls what happens after a click. `Ctrl+F` only enables or disables the feature.
 
-**A. 不激活窗口（默认）**
-点后台窗口不激活，适合点播放按钮、链接、列表；点输入框会自动把窗口切到前台方便打字。
+### A. Do not activate the window (default)
 
-**B. 保持当前遮挡关系**
-点下面的窗口会**正常激活**（光标进去、能直接打字），但在点下去之前，工具会先看清“现在有哪些窗口盖在它上面”，
-把这些窗口按原来的顺序钉在最上层。于是被点的窗口激活后只会升到“钉住组”的下面 —— 看起来遮挡关系一点没变。
+Clicks in background windows are delivered without activation. This is useful for play buttons, links, and list items. Clicking a text field automatically brings its window forward so you can type.
 
-- 打字完全正常：真实键盘、真实输入法，中文没问题。
-- 上面的**所有**窗口（不只是和它重叠的）都会按原有顺序保持在前。三个窗口时，中间那个不会被挤到后面。
-- 这组“保持”只在**当前这次输入**期间有效，两种方式自动恢复：
-  1. 你一换到别的窗口（点别的窗口、Alt+Tab、或者点上面前面那个窗口）—— 立刻恢复；
-  2. 你停手 6 秒（没有键盘/鼠标输入）—— 自动恢复，不用手动点任何东西。
-  恢复之后新开的窗口也会正常盖在上面。
-- 也可以手动解除：Ctrl+F 关掉开关，或菜单“解除‘保持遮挡’”；不想停手 6 秒就解除的话，
-  菜单里把“停止打字 6 秒后自动解除保持”关掉即可。
+### B. Preserve current window stacking
 
-## 原理（为什么能做到）
+Clicking a lower window **activates it normally**, which allows the caret to enter the field and typing to work directly. Before activation, the utility identifies the windows covering the target window and pins them in their current order at the top. The selected window can then become active while remaining beneath the pinned group, so the visible stacking relationship does not appear to change.
 
-Windows 把“点击窗口”和“激活窗口 / 提到最前”绑在一起：真实鼠标按下时，系统会先激活窗口再派发消息，窗口就被抬到了前面。
+- Typing works normally with real keyboard input and a real input method, including Chinese.
+- **All** windows above the target window, not only those that overlap it, are kept in their original order at the top. With three windows, for example, the middle window is not pushed behind the others.
+- The preserved stacking group remains active only for the **current typing session**. It is restored automatically in either of these situations:
+  1. You switch to another window by clicking it, pressing `Alt+Tab`, or selecting a window above the target.
+  2. You stop using the keyboard and mouse for six seconds.
+- New windows created after restoration also appear normally above the target window.
+- You can release the group manually by pressing `Ctrl+F` to disable the feature or by selecting **Release the preserved stacking order** from the menu. To disable the six-second timeout, turn off **Release the hold after six seconds without typing** in the menu.
 
-本工具用一个全局低级鼠标钩子（`WH_MOUSE_LL`）在系统派发之前拦住这次点击，然后按照目标窗口的坐标系，
-用 `PostMessage` 把 `WM_MOUSEMOVE / WM_LBUTTONDOWN / WM_LBUTTONUP`（以及双击、右键、中键、滚轮）直接投递给光标下的那个控件。
-目标窗口收到了“一次点击”，但从来没有被激活，所以 **Z 序、前台窗口、键盘焦点都不会变**——不是“提上去再放回来”，而是压根没动过。
+## How it works
 
-点在输入框上时是例外：识别出输入框后，工具会把窗口切到前台（记下原来的层级和前台窗口），补一次真实点击定位光标，
-之后你就能用真实键盘和输入法打字；用菜单“把临时前置的窗口放回原处”可以还原层序和焦点。
+Windows normally combines a mouse click on a window with window activation and foreground promotion. When the real mouse button is pressed, Windows activates the target window before dispatching the click, which brings the window to the front.
 
-输入框的识别分两层：先看控件类名（`Edit` / `RichEdit` / `Scintilla` / 各类 `TextBox`），
-认不出来再用 UI Automation 看点击位置的控件类型是不是 `Edit`（覆盖浏览器、Electron、WPF 等）。
+This utility installs a global low-level mouse hook (`WH_MOUSE_LL`) and intercepts the click before Windows dispatches it. It then converts the pointer position to the target window's client coordinates and uses `PostMessage` to send `WM_MOUSEMOVE`, `WM_LBUTTONDOWN`, and `WM_LBUTTONUP` directly to the control beneath the pointer. It also handles double-clicks, right-clicks, middle-clicks, and wheel events.
 
-> 另外验证过一条看起来更“真”的路：给目标窗口临时加 `WS_EX_NOACTIVATE`，让真实鼠标点击落下去但不激活。
-> 实测这条路 **在 Windows 上不成立**：该样式只在窗口创建时生效，运行时改它对点击激活没有任何影响
-> （用 WinForms 窗口和原生 DefWindowProc 窗口都试过，点击照样激活并抬升）。所以最终采用了消息投递方案。
+The target window receives one click, but it is never activated. **The Z-order, foreground window, and keyboard focus therefore remain unchanged.** This is different from bringing a window forward and then moving it back: the window is never moved in the first place.
 
-## 限制
+Text fields are the exception. After detecting a text field, the utility records the current window stack and foreground window, brings the target window to the foreground, and sends a real click to position the caret. You can then type with a real keyboard and input method. The tray menu can restore the original stacking order and foreground window after borrowing it.
 
-- 依赖窗口消息的程序都能用：Chrome / Edge、Word / Excel、记事本、资源管理器、VLC、PotPlayer、Electron 应用、WinForms/WPF 程序……
-- **游戏** 和 **部分 UWP / 微软商店应用** 自己读原始输入（RawInput / CoreWindow），可能收不到这种点击，表现为“点了没反应”。
-- 极少数程序（部分自绘 UI 框架）收到点击后会**自己**把窗口抢到前面，这不是本工具能拦住的——它确实收到了一次点击。
-- 个别程序的输入框既不是标准控件类、也不暴露 UI Automation，工具认不出来；这时用菜单里的
-  **“临时前置光标下的窗口（打字用）”** 手动借一次。
-- 想点 **以管理员权限运行** 的窗口，需要本程序也以管理员身份运行（否则系统会阻止消息投递，此时会退回普通点击）。
+Text-field detection works in two stages. It first checks the control class, such as `Edit`, `RichEdit`, `Scintilla`, and various `TextBox` controls. If the class is not recognized, it uses UI Automation to check whether the control type at the clicked position is `Edit`, covering browsers, Electron, WPF, and similar applications.
 
-## 文件
+> Another approach that initially appears more realistic was also tested: temporarily adding `WS_EX_NOACTIVATE` to the target window so that a real mouse click would not activate it.
+>
+> Testing showed that this approach **does not work on Windows**. The style takes effect only when a window is created. Applying it at runtime has no effect on click activation, and clicks still activated and raised both WinForms windows and windows using the native `DefWindowProc`. The final implementation therefore uses posted mouse messages.
 
-| 路径 | 说明 |
+## Limitations
+
+- Applications that process window messages generally work, including Chrome, Edge, Word, Excel, Notepad, File Explorer, VLC, PotPlayer, Electron applications, and WinForms or WPF applications.
+- **Games** and **some UWP or Microsoft Store applications** read raw input through RawInput or CoreWindow. They may not receive these clicks and can appear unresponsive.
+- A small number of applications, especially those using custom-rendered UI frameworks, may bring themselves to the foreground after receiving a click. The utility cannot prevent this because the application genuinely received the click.
+- Some applications expose neither a standard text-field control class nor a usable UI Automation type. Use **Temporarily foreground the window under the pointer** from the tray menu as a manual fallback.
+- To interact with a window running with administrator privileges, Non Activating Operate must also run as administrator. Otherwise Windows blocks message delivery and the utility falls back to a normal click.
+
+## Files
+
+| Path | Description |
 | --- | --- |
-| `build.bat` | 编译出 `NoActivateClick.exe`（用 Windows 自带的 .NET Framework 4.x 编译器，不需要装 SDK） |
-| `src\` | 源码（C# 5 / WinForms，无第三方依赖） |
-| `tests\` | 自动化验收测试（见下） |
+| `build.bat` | Compiles `Non Activating Operate.exe` using the .NET Framework 4.x compiler included with Windows. No SDK is required. |
+| `src\` | Source code (C# 5 / WinForms, no third-party dependencies). |
+| `tests\` | Automated acceptance tests described below. |
 
-配置和日志：`%APPDATA%\NoActivateClick\config.ini`、`log.txt`
+Configuration and logs:
 
-## 环境要求
+```text
+%APPDATA%\Non Activating Operate\config.ini
+%APPDATA%\Non Activating Operate\log.txt
+```
 
-- Windows 10 / 11（x64 或 x86）
-- .NET Framework 4.x（Windows 自带，不需要额外安装）
+## Requirements
 
-> 自己编译出来的 exe 没有代码签名，第一次运行时 SmartScreen 可能提示“未知发布者”，
-> 点“更多信息 → 仍要运行”即可。
+- Windows 10 or Windows 11 (x64 or x86)
+- .NET Framework 4.x, included with Windows; no separate installation is required
 
-## 重新编译
+> The executable produced by this repository is not code-signed. Windows SmartScreen may report an **Unknown publisher** warning on first launch. Select **More info → Run anyway** to continue.
 
-双击 `build.bat`，或者：
+## Rebuild
 
-    build.bat -nopause
+Double-click `build.bat`, or run:
 
-## 自动化验收测试
+```bat
+build.bat -nopause
+```
 
-`tests\Harness.cs` 会创建几个重叠、层叠的窗口，然后验证：
+## Automated acceptance tests
 
-- 对照组：不加钩子时，普通点击确实会把后面窗口抬到前面、并抢走前台（证明测试方法有效）
-- 引擎直接调用：点击送到、坐标正确、Z 序不变、前台不变
-- 钩子端到端：真实点击被吞掉、目标收到的是投递消息、Z 序/前台不变
-- 合成拖动（不激活）与真实拖放切换；真正的 OLE 拖放（后台窗口拖 FileDrop 到另一个窗口，确认收到 drop）
-- 借前台：目标窗口被切到前台 → 放回时前台还原、原层级还原 → 借来的窗口里真的能打出字
-- 双击、按钮点击、滚轮、标题栏忽略、前台窗口豁免、DPI 换算
+`tests\Harness.cs` creates several overlapping and stacked windows and verifies that:
 
-运行：
+- In the control group, ordinary clicks raise background windows and steal foreground focus when the hook is disabled, proving that the test method is valid.
+- Direct engine calls deliver clicks at the correct coordinates without changing Z-order or the foreground window.
+- The end-to-end hook swallows real clicks, delivers posted messages to the target, and preserves Z-order and the foreground window.
+- Synthetic dragging without activation switches correctly to real drag and drop, and true OLE drag and drop works when dragging a file from a background window to another window.
+- Foreground borrowing brings the target window to the front, restores the original foreground window and stacking order afterward, and allows text to be typed into the borrowed window.
+- Double-click, button clicks, wheel input, title-bar ignoring, active-window exemptions, and DPI conversion work correctly.
 
-    tests\run-tests.bat
+Run the tests with:
 
-测试会在屏幕右下角弹出几个窗口，并注入几次真实鼠标点击（约 6 秒），跑完自动关闭。
+```bat
+tests\run-tests.bat
+```
+
+The test suite opens several windows in the lower-right area of the screen and injects real mouse clicks for about six seconds. The test windows close automatically when the run finishes.
