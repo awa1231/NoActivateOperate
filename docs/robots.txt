@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://awa1231.github.io/NoActivateOperate/sitemap.xml

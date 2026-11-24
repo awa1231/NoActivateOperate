@@ -1,5 +1,7 @@
 # Non Activating Operate
 
+[Project website](https://awa1231.github.io/NoActivateOperate/) · [Download for Windows](https://github.com/awa1231/NoActivateOperate/releases)
+
 Click buttons, links, and video controls in background windows without bringing those windows to the front or taking keyboard focus away from the window you are currently typing in.
 
 Clicking a text field in a background window automatically brings that window forward, so you can start typing normally, including with Chinese input methods.
