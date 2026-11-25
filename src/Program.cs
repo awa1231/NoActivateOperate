@@ -14,7 +14,7 @@ namespace NonActivatingOperate
             {
                 if (!createdNew)
                 {
-                    MessageBox.Show("不激活点击已经在运行了，请查看系统托盘图标。", "不激活点击",
+                    MessageBox.Show("Non Activating Operate is already running. Check the notification area.", "Non Activating Operate",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }

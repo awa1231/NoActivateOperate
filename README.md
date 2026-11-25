@@ -20,6 +20,7 @@ Clicking a text field in a background window automatically brings that window fo
 ## Usage
 
 1. Run `build.bat` to create `Non Activating Operate.exe`. Double-click the executable. A small two-window icon appears in the notification area.
+   If you downloaded the prebuilt binary from the [releases page](https://github.com/awa1231/NoActivateOperate/releases), the file is named `Non.Activating.Operate.exe`: GitHub replaces spaces in uploaded file names with dots, and it is the same executable.
 2. Press **Ctrl+F** to enable the feature. The icon turns green and a confirmation sound may play.
 3. Click the play button, link, or list item in a background window. The window is not brought to the front, and the current window keeps keyboard focus.
 4. **To type:** Click a text field in the background window. That window is brought to the front temporarily, the cursor is placed where you clicked, and you can start typing normally.
@@ -147,3 +148,7 @@ tests\run-tests.bat
 ```
 
 The test suite opens several windows in the lower-right area of the screen and injects real mouse clicks for about six seconds. The test windows close automatically when the run finishes.
+
+## License
+
+MIT © 2026 awa1231. See [LICENSE](LICENSE).

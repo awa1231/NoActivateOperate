@@ -35,7 +35,7 @@ namespace NonActivatingOperate
 
             if (hwnd == IntPtr.Zero || !Native.IsWindow(hwnd))
             {
-                message = "没找到要借的窗口";
+                message = "No window to bring forward";
                 return false;
             }
 
@@ -43,7 +43,7 @@ namespace NonActivatingOperate
             IntPtr foreground = Native.GetForegroundWindow();
             if (foreground == root)
             {
-                message = "它已经在前台了，直接打字就行";
+                message = "It is already in the foreground - just type";
                 return false;
             }
 
@@ -58,7 +58,7 @@ namespace NonActivatingOperate
             {
                 _previous = IntPtr.Zero;
                 _above = IntPtr.Zero;
-                message = "系统拒绝了这次前台切换，再按一次试试";
+                message = "Windows refused the foreground switch. Try again.";
                 return false;
             }
 

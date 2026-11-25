@@ -17,7 +17,7 @@ namespace NonActivatingOperate
 
         public HotkeyDialog(HotkeyBinding current)
         {
-            Text = "设置快捷键";
+            Text = "Change shortcut";
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             MinimizeBox = false;
@@ -32,7 +32,7 @@ namespace NonActivatingOperate
             ClientSize = new Size(S(440), S(208));
 
             Label title = new Label();
-            title.Text = "按下要使用的快捷键组合（至少包含 Ctrl / Alt / Shift 之一）：";
+            title.Text = "Press the shortcut you want (it must include Ctrl, Alt or Shift):";
             title.AutoSize = false;
             title.Bounds = new Rectangle(S(18), S(16), S(404), S(40));
             Controls.Add(title);
@@ -46,24 +46,24 @@ namespace NonActivatingOperate
             _combo.Dock = DockStyle.Fill;
             _combo.TextAlign = ContentAlignment.MiddleCenter;
             _combo.Font = new Font(Font.FontFamily, 14f, FontStyle.Bold);
-            _combo.Text = current != null ? current.ToText() : "未设置";
+            _combo.Text = current != null ? current.ToText() : "not set";
             box.Controls.Add(_combo);
 
             _hint = new Label();
-            _hint.Text = "当前：" + (current != null ? current.ToText() : "未设置");
+            _hint.Text = "Current: " + (current != null ? current.ToText() : "not set");
             _hint.AutoSize = false;
             _hint.Bounds = new Rectangle(S(18), S(126), S(404), S(20));
             _hint.ForeColor = SystemColors.GrayText;
             Controls.Add(_hint);
 
             Button ok = new Button();
-            ok.Text = "确定";
+            ok.Text = "OK";
             ok.Bounds = new Rectangle(S(246), S(158), S(88), S(32));
             ok.Click += delegate { Accept(); };
             Controls.Add(ok);
 
             Button cancel = new Button();
-            cancel.Text = "取消";
+            cancel.Text = "Cancel";
             cancel.Bounds = new Rectangle(S(342), S(158), S(80), S(32));
             cancel.DialogResult = DialogResult.Cancel;
             Controls.Add(cancel);
@@ -93,20 +93,20 @@ namespace NonActivatingOperate
             e.SuppressKeyPress = true;
             if (!binding.IsValid)
             {
-                _hint.Text = "请同时按住 Ctrl / Alt / Shift 中的一个键";
+                _hint.Text = "Hold Ctrl, Alt or Shift together with the key";
                 return;
             }
 
             _captured = binding;
             _combo.Text = binding.ToText();
-            _hint.Text = "当前：" + _captured.ToText();
+            _hint.Text = "Current: " + _captured.ToText();
         }
 
         private void Accept()
         {
             if (_captured == null || !_captured.IsValid)
             {
-                MessageBox.Show(this, "请先按下一个包含 Ctrl / Alt / Shift 的快捷键组合。", "设置快捷键",
+                MessageBox.Show(this, "Press a shortcut that includes Ctrl, Alt or Shift first.", "Change shortcut",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
