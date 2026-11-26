@@ -1,0 +1,42 @@
+{
+  "name": "non-activating-operate",
+  "version": "1.0.1",
+  "description": "Click, scroll and type in background Windows without stealing focus: non-activating clicks, typing into lower windows while keeping the stacking order.",
+  "keywords": [
+    "windows",
+    "tray",
+    "noactivate",
+    "click-through",
+    "window-manager",
+    "focus",
+    "automation",
+    "utility"
+  ],
+  "license": "MIT",
+  "author": "awa1231",
+  "homepage": "https://awa1231.github.io/NoActivateOperate/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/awa1231/NoActivateOperate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/awa1231/NoActivateOperate/issues"
+  },
+  "os": [
+    "win32"
+  ],
+  "engines": {
+    "node": ">=16"
+  },
+  "bin": {
+    "non-activating-operate": "bin/cli.js"
+  },
+  "files": [
+    "bin/",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "prepack": "node scripts/prepack.js"
+  }
+}

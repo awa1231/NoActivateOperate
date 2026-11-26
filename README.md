@@ -6,6 +6,10 @@ Click buttons, links, and video controls in background windows without bringing 
 
 Clicking a text field in a background window automatically brings that window forward, so you can start typing normally, including with Chinese input methods.
 
+> ⭐ If you find it useful, please give the project a star on [GitHub](https://github.com/awa1231/NoActivateOperate) — it helps others find it.
+>
+> 如果觉得好用，欢迎去 GitHub 点个 Star。
+
 - **Portable:** The application compiles into a single executable of approximately 55 KB. It does not write to system directories. Configuration is stored in `%APPDATA%\Non Activating Operate`.
 - **No build artifacts in the repository:** Run `build.bat` to generate the executable. It uses the .NET Framework compiler included with Windows, so no SDK is required.
 - **System tray utility:** The tray icon is green when the feature is enabled and blue when a window is temporarily being borrowed.
@@ -16,6 +20,26 @@ Clicking a text field in a background window automatically brings that window fo
 > If this causes problems, right-click the tray icon and select **Change toggle shortcut…** to assign a less common key combination.
 
 ---
+
+## Install
+
+- **npm (Windows, Node.js 16+):**
+
+  ```bash
+  npx non-activating-operate
+  ```
+
+  or install it globally and start it from anywhere:
+
+  ```bash
+  npm install -g non-activating-operate
+  non-activating-operate
+  ```
+
+  The package contains the prebuilt executable and a small launcher.
+
+- **Prebuilt binary:** download `Non.Activating.Operate.exe` from the [releases page](https://github.com/awa1231/NoActivateOperate/releases).
+- **From source:** run `build.bat`, then start `Non Activating Operate.exe`.
 
 ## Usage
 

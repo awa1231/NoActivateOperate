@@ -1,4 +1,5 @@
 # build output
+bin/*.exe
 Non Activating Operate.exe
 *.pdb
 bin/
