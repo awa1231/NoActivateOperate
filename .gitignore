@@ -2,7 +2,6 @@
 bin/*.exe
 Non Activating Operate.exe
 *.pdb
-bin/
 obj/
 
 # test binaries / output
