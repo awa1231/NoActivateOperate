@@ -10,7 +10,7 @@ Clicking a text field in a background window automatically brings that window fo
 >
 > 如果觉得好用，欢迎去 GitHub 点个 Star。
 
-- **Portable:** The application compiles into a single executable of approximately 55 KB. It does not write to system directories. Configuration is stored in `%APPDATA%\Non Activating Operate`.
+- **Portable:** The application compiles into a single executable of approximately 60 KB. It does not write to system directories. Configuration is stored in `%APPDATA%\Non Activating Operate`.
 - **No build artifacts in the repository:** Run `build.bat` to generate the executable. It uses the .NET Framework compiler included with Windows, so no SDK is required.
 - **System tray utility:** The tray icon is green when the feature is enabled and blue when a window is temporarily being borrowed.
 - **One shortcut:** Press **Ctrl+F** to toggle the feature. You can assign a different shortcut from the tray menu.
